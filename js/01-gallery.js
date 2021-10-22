@@ -32,7 +32,6 @@ function onPhotoCardsClick(event) {
     return;
   }
   imageSrc = event.target.dataset.source;
-  console.log(event.target.dataset.source);
 
   galleryContainer.onclick = () => {
     createOpenOriginalPhoto.onclick = basicLightbox
