@@ -3,9 +3,6 @@ import { galleryItems } from './gallery-items.js';
 const galleryContainer = document.querySelector('.gallery');
 const photoCardsMarkup = createGalleryCardsMarkup(galleryItems);
 
-let imageSrc = '';
-let createOpenOriginalPhoto;
-
 galleryContainer.insertAdjacentHTML('beforeend', photoCardsMarkup);
 galleryContainer.addEventListener('click', onPhotoCardsClick);
 
@@ -31,16 +28,12 @@ function onPhotoCardsClick(event) {
   if (event.target.nodeName !== 'IMG') {
     return;
   }
-  imageSrc = event.target.dataset.source;
-
-  galleryContainer.onclick = () => {
-    createOpenOriginalPhoto.onclick = basicLightbox
-      .create(
-        `
-    <img width="1400" height="900" src="${imageSrc}">`,
-      )
-      .show();
-  };
+  const createOpenOriginalPhoto = basicLightbox
+    .create(
+      `
+    <img width="1400" height="900" src="${event.target.dataset.source}">`,
+    )
+    .show();
 }
 
 console.log(galleryItems);
